@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% block title %}
+<title>Home Page</title>
+{% endblock title %}
+
+
+{% block body %}
+<img src="{{ url_for('static', filename='img/image.jpg') }}">
+
+<div class="row mb-2">
+{% for blog in blog %}
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          
+          <h3 class="mb-0">{{blog.title}}</h3>
+          <div class="mb-1 text-muted">{{blog.pub_date}}</div>
+          <p class="mb-auto">{{blog.content}}</p>
+          <h4>Author:-{{blog.author}}</h4>
+          <a href="/blog_detail/{{blog.id}}" class="stretched-link btn btn-primary">Continue reading</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+    
+{% endblock body %}
+    

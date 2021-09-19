@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block title %}
+<title>Blog Page</title>
+{% endblock title %}
+
+
+{% block body %}
+  <center><h1>Blog Post</h1></center>
+    <form action="/blog_post" method='POST'>
+        Title:<input type='text' name='title'><br>
+        Content:<textarea name='content'></textarea><br>
+        Author:<input type='text' name='author'><br>
+        <input type='submit' value='Post'>
+    </form>
+{% endblock body %}
+  
+

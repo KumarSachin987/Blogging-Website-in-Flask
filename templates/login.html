@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block title %}
+<title>Login Page</title>
+{% endblock title %}
+
+
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+  <strong>Message</strong> {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<center><h1>Login Page</h1></center>
+{% if current_user.is_authenticated %}
+{{current_user.username}}<form action='/logout'>
+<input type='submit' value='Logout'>
+</form>
+{% else %}
+    <form action="/login" method='POST'>
+        username:<input type='text' name='username'><br>
+        password:<input type='password' name='password'><br>
+        <input type='submit' value='submit'>
+    </form>
+{% endif %}  
+{% endblock body %}
+  
+
